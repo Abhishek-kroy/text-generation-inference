@@ -21,9 +21,11 @@ jobs:
       run: pip install build twine
 
     - name: Build package
+      working-directory: ./server  # Update this to the directory where pyproject.toml is located
       run: python -m build
 
     - name: Upload to PyPI
+      working-directory: ./server  # Same here
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
